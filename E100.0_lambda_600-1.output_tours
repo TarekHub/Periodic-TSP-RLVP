@@ -1,0 +1,393 @@
+NAME : E100.0_lambda_600-1.output_tours.86649.927490.tour
+TYPE : SOLUTION PTSP
+DIMENSION : 100
+TOUR_SECTION
+SERVICE_TIME = 2941406
+DAY = 1
+Dimention = 8
+1
+64
+11
+75
+94
+61
+49
+62
+DELAY = -46
+------------
+SERVICE_TIME = 2933146
+DAY = 2
+Dimention = 7
+1
+91
+4
+14
+16
+76
+79
+DELAY = -33
+------------
+SERVICE_TIME = 2917854
+DAY = 3
+Dimention = 7
+1
+51
+45
+93
+22
+88
+85
+DELAY = -40
+------------
+SERVICE_TIME = 2917595
+DAY = 4
+Dimention = 7
+1
+21
+67
+65
+74
+84
+80
+DELAY = -38
+------------
+SERVICE_TIME = 2908876
+DAY = 5
+Dimention = 7
+1
+30
+8
+25
+42
+9
+43
+DELAY = -39
+------------
+SERVICE_TIME = 2934985
+DAY = 6
+Dimention = 7
+1
+83
+58
+17
+87
+33
+40
+DELAY = -48
+------------
+SERVICE_TIME = 2928077
+DAY = 7
+Dimention = 8
+1
+26
+62
+81
+96
+97
+56
+2
+DELAY = -44
+------------
+SERVICE_TIME = 2862481
+DAY = 8
+Dimention = 8
+1
+47
+57
+23
+31
+34
+18
+36
+DELAY = -61
+------------
+SERVICE_TIME = 2940450
+DAY = 9
+Dimention = 8
+1
+98
+3
+60
+20
+92
+72
+73
+DELAY = -59
+------------
+SERVICE_TIME = 2899557
+DAY = 10
+Dimention = 8
+1
+78
+86
+10
+68
+48
+95
+32
+DELAY = -68
+------------
+SERVICE_TIME = 2940239
+DAY = 11
+Dimention = 6
+1
+77
+99
+59
+28
+53
+DELAY = -53
+------------
+SERVICE_TIME = 2917997
+DAY = 12
+Dimention = 10
+1
+35
+46
+49
+76
+66
+12
+69
+6
+71
+DELAY = -69
+------------
+SERVICE_TIME = 2925761
+DAY = 13
+Dimention = 8
+1
+50
+55
+44
+82
+41
+38
+51
+DELAY = -47
+------------
+SERVICE_TIME = 2878008
+DAY = 14
+Dimention = 8
+1
+5
+54
+91
+100
+13
+52
+8
+DELAY = -40
+------------
+SERVICE_TIME = 2939346
+DAY = 15
+Dimention = 10
+1
+43
+22
+11
+9
+93
+63
+87
+85
+26
+DELAY = -60
+------------
+SERVICE_TIME = 2886638
+DAY = 16
+Dimention = 5
+1
+14
+4
+83
+25
+DELAY = -24
+------------
+SERVICE_TIME = 2878946
+DAY = 17
+Dimention = 8
+1
+7
+75
+61
+42
+88
+74
+79
+DELAY = -40
+------------
+SERVICE_TIME = 2927866
+DAY = 18
+Dimention = 9
+1
+24
+37
+84
+16
+47
+70
+45
+57
+DELAY = -44
+------------
+SERVICE_TIME = 2938445
+DAY = 19
+Dimention = 6
+1
+21
+64
+94
+58
+80
+DELAY = -35
+------------
+SERVICE_TIME = 2901095
+DAY = 20
+Dimention = 8
+1
+27
+30
+2
+89
+15
+29
+92
+DELAY = -58
+------------
+SERVICE_TIME = 2930379
+DAY = 21
+Dimention = 8
+1
+65
+96
+39
+18
+33
+98
+46
+DELAY = -48
+------------
+SERVICE_TIME = 2877542
+DAY = 22
+Dimention = 5
+1
+97
+67
+40
+17
+DELAY = -29
+------------
+SERVICE_TIME = 2931481
+DAY = 23
+Dimention = 8
+1
+76
+73
+90
+69
+19
+56
+23
+DELAY = -57
+------------
+SERVICE_TIME = 2885394
+DAY = 24
+Dimention = 8
+1
+38
+10
+44
+72
+49
+81
+62
+DELAY = -50
+------------
+SERVICE_TIME = 2934289
+DAY = 25
+Dimention = 6
+1
+91
+20
+13
+8
+71
+DELAY = -33
+------------
+SERVICE_TIME = 2926212
+DAY = 26
+Dimention = 7
+1
+34
+55
+5
+100
+6
+48
+DELAY = -43
+------------
+SERVICE_TIME = 2899521
+DAY = 27
+Dimention = 9
+1
+54
+31
+3
+41
+9
+77
+36
+85
+DELAY = -66
+------------
+SERVICE_TIME = 2934078
+DAY = 28
+Dimention = 11
+1
+26
+52
+83
+22
+86
+60
+53
+11
+28
+68
+DELAY = -85
+------------
+SERVICE_TIME = 2929294
+DAY = 29
+Dimention = 10
+1
+35
+82
+78
+50
+79
+32
+95
+87
+63
+DELAY = -80
+------------
+SERVICE_TIME = 2939060
+DAY = 30
+Dimention = 12
+1
+43
+80
+66
+16
+14
+99
+51
+4
+59
+57
+93
+DELAY = -86
+------------
+-1
+EOF
