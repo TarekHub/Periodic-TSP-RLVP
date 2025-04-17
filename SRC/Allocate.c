@@ -10,6 +10,8 @@ void Allocate()
     Free(BestLambdaToursDimension);
     Free(BestToursCost);
     Free(BestToursDimension);
+    Free(LambdaNeighborsToursCost);
+    Free(LambdaNeighborsToursDimension);
 
     Free(BestLambda);
     Free(BestSolution);

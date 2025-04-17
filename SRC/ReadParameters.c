@@ -3,7 +3,6 @@
 static char Delimiters[] = "= \n\t\r\f\v\xef\xbb\xbf";
 static void Read_MU(void);
 static void Read_Optimum(void);
-static void Read_Runs();
 static void Read_Lambda(void);
 static void Read_MAX_ITERATIONS(void);
 static void Read_TIME_HORIZON(void);
@@ -15,7 +14,7 @@ static char *GetFileName(char *Line);
 void ReadParameters()
 {
     int i;
-    char *Line, *Keyword;
+    char *Line, *Keyword, *Token;
 
     CurrentQuality = 0;
     Iteration = 0;
@@ -38,9 +37,23 @@ void ReadParameters()
             Keyword[i] = (char) toupper(Keyword[i]);
         if (!strcmp(Keyword, "MU")) {
           Read_MU();
-        }else if (!strcmp(Keyword, "RUNS")) {
-          Read_Runs();
-        }else if (!strcmp(Keyword, "LAMBDA")) {
+        }else if (!strcmp(Keyword, "STRATEGY")){
+			if (!(Token = strtok(0, Delimiters)))
+				eprintf("%s", "STRATEGY: SW, ID_BEST or ID_ANY expected");
+
+            for (i = 0; i < strlen(Token); i++)
+                Token[i] = (char) toupper(Token[i]);
+
+            if (!strncmp(Token, "SW", strlen(Token)))
+                Strategy = SW;
+            else if (!strncmp(Token, "ID_BEST", strlen(Token)))
+                Strategy = ID_BEST;
+            else if (!strncmp(Token, "ID_ANY", strlen(Token)))
+                Strategy = ID_ANY;
+			else
+				eprintf("%s", "STRATEGY: SW, ID_BEST or ID_ANY expected");
+
+		}else if (!strcmp(Keyword, "LAMBDA")) {
           Read_Lambda();
         }else if (!strcmp(Keyword, "MAX_ITERATIONS")) {
           Read_MAX_ITERATIONS();
@@ -66,6 +79,7 @@ void ReadParameters()
         }
     }
 
+	fclose(ParameterFile);
     free(LastLine);
     LastLine = 0;
 }
@@ -89,14 +103,7 @@ static void Read_MU()
     if (muSize < 0)
         eprintf("MU: < 0");
 }
-static void Read_Runs()
-{
-  char *Token = strtok(0, Delimiters);
-      if (!Token || !sscanf(Token, "%d", &Runs))
-        eprintf("RUNS: Integer expected");
-    if (Runs < 0)
-        eprintf("RUNS: < 0");
-}
+
 static void Read_Lambda()
 {
     char *Token = strtok(0, Delimiters);

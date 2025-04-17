@@ -36,6 +36,7 @@ void ReadProblem()
     }
 
     TotalNodes = (Dimension + 1) * TimeHorizon;
+	fclose(ProblemFile);
     free(LastLine);
     LastLine = 0;
 }

@@ -22,6 +22,8 @@
 #define Add(a, b, c) { Link(a, b); Link(b, c); b->IsVisited = 1;}
 #define PRANDMAX INT_MAX
 
+enum Strategies { SW, ID_BEST, ID_ANY};
+
 /* Node structure */
 typedef struct Node Node;
 struct Node {
@@ -44,12 +46,15 @@ struct Node {
 typedef int (*CostFunction) (Node * Na, Node * Nb);
 
 extern Node *NodeSet, *BestLambda, *BestSolution;
+extern Node **LambdaNeighbors;
+
 extern Node *FirstNode;
 extern int *CostMatrix, *FillingPeriods;
 
 extern int BestLambdaDay;
 
 extern double CurrentQuality;
+
 extern double LogCurrentQuality;
 extern int *CurrentToursCost;
 extern int *CurrentToursDimension;
@@ -62,6 +67,10 @@ extern double BestQuality;
 extern int *BestToursCost;
 extern int *BestToursDimension;
 
+extern double *LambdaNeighborsQuality;
+extern int **LambdaNeighborsToursCost;
+extern int **LambdaNeighborsToursDimension;
+
 extern int Dimension;
 extern int DimensionSaved;
 extern int Dim;
@@ -69,9 +78,9 @@ extern int TotalNodes;
 
 extern char *ParameterFileName, *ProblemFileName, *InitToursFileName, *OutputToursFileName;
 extern char *LastLine;
-extern int newOptimum, muSize, Run, Runs, Lambda, MaxIterations, TimeHorizon, Iteration, MaxDailyDuration, FourMinutes;
+extern int newOptimum, muSize, Run, Lambda, MaxIterations, TimeHorizon, Iteration, MaxDailyDuration, FourMinutes;
 
-extern double Precision, Optimum;
+extern double Precision, Optimum, LastTime;
 
 extern double **mu;
 
@@ -81,6 +90,7 @@ extern CostFunction Distance, D;
 extern const int FOUR_MINUTES;
 
 extern int AtLeastOneFeasibleNeighbor;
+extern int Strategy;
 
 void Init();
 void Allocate();
@@ -105,6 +115,10 @@ void InitToursCost();
 double GetCurrentQuality();
 
 void *BitFlip();
+
+void SW_Strategy();
+void ID_Strategy();
+
 int GetDimension(Node * Solution, int day);
 
 void DeepCopy(Node * CibleSolution, Node * SourceSolution);
