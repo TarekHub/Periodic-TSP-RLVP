@@ -84,17 +84,17 @@ void ID_Strategy(){
 
 				DeepCopy(NodeSet, LambdaNeighbors[BestIndex]);
 			}
+		}
 
-			// Best Solution
-			if(LogCurrentQuality < BestQuality){
-				BestQuality = LogCurrentQuality;
-				for(int h = 0 ; h < TimeHorizon ; h++){
-					BestToursCost[h] = CurrentToursCost[h];
-					BestToursDimension[h] = CurrentToursDimension[h];
-				}
-				DeepCopy(BestSolution, NodeSet);
-            	printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
+		// Best Solution
+		if(LogCurrentQuality < BestQuality){
+			BestQuality = LogCurrentQuality;
+			for(int h = 0 ; h < TimeHorizon ; h++){
+				BestToursCost[h] = CurrentToursCost[h];
+				BestToursDimension[h] = CurrentToursDimension[h];
 			}
+			DeepCopy(BestSolution, NodeSet);
+            printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
 		}
 
         Iteration += lambdaCandidates;
