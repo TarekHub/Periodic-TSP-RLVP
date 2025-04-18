@@ -48,83 +48,55 @@ void ID_Strategy(){
             DeepCopy(NodeSet, BestLambda);
 		}
 
-		// ANY
-		else if(Strategy == ID_ANY){
-			int AnyIndex = rand() % i;
+		// If one feasible neighbor exists
+		else if(i > 0){
 
-            LogCurrentQuality = LambdaNeighborsQuality[AnyIndex];
-            for(int h = 0 ; h < TimeHorizon ; h++){
-                CurrentToursCost[h] = LambdaNeighborsToursCost[AnyIndex][h];
-                CurrentToursDimension[h] = LambdaNeighborsToursDimension[AnyIndex][h];
-            }
-			DeepCopy(NodeSet, LambdaNeighbors[AnyIndex]);
+			// ANY
+			if(Strategy == ID_ANY){
+				int AnyIndex = rand() % i;
 
-		// BEST
-		}else{
-			int BestIndex = 0;
-			double MinQuality = DBL_MAX;
+            	LogCurrentQuality = LambdaNeighborsQuality[AnyIndex];
+            	for(int h = 0 ; h < TimeHorizon ; h++){
+                	CurrentToursCost[h] = LambdaNeighborsToursCost[AnyIndex][h];
+                	CurrentToursDimension[h] = LambdaNeighborsToursDimension[AnyIndex][h];
+            	}
+				DeepCopy(NodeSet, LambdaNeighbors[AnyIndex]);
 
-			// Trouver le voisin avec la qualité minimale
-			for(int j = 0; j < i; j++){
-              if(LambdaNeighborsQuality[j] < MinQuality){
-                  MinQuality = LambdaNeighborsQuality[j];
-                  BestIndex = j;
-              }
+			// BEST
+			}else{
+				int BestIndex = 0;
+				double MinQuality = DBL_MAX;
+
+				// Trouver le voisin avec la qualité minimale
+				for(int j = 0; j < i; j++){
+					if(LambdaNeighborsQuality[j] < MinQuality){
+                  		MinQuality = LambdaNeighborsQuality[j];
+                  		BestIndex = j;
+					}
+				}
+
+          		// Appliquer le meilleur voisin
+          		LogCurrentQuality = LambdaNeighborsQuality[BestIndex];
+          		for(int h = 0; h < TimeHorizon; h++){
+					CurrentToursCost[h] = LambdaNeighborsToursCost[BestIndex][h];
+					CurrentToursDimension[h] = LambdaNeighborsToursDimension[BestIndex][h];
+				}
+
+				DeepCopy(NodeSet, LambdaNeighbors[BestIndex]);
 			}
 
-          	// Appliquer le meilleur voisin
-          	LogCurrentQuality = LambdaNeighborsQuality[BestIndex];
-          	for(int h = 0; h < TimeHorizon; h++){
-				CurrentToursCost[h] = LambdaNeighborsToursCost[BestIndex][h];
-				CurrentToursDimension[h] = LambdaNeighborsToursDimension[BestIndex][h];
+			// Best Solution
+			if(LogCurrentQuality < BestQuality){
+				BestQuality = LogCurrentQuality;
+				for(int h = 0 ; h < TimeHorizon ; h++){
+					BestToursCost[h] = CurrentToursCost[h];
+					BestToursDimension[h] = CurrentToursDimension[h];
+				}
+				DeepCopy(BestSolution, NodeSet);
+            	printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
 			}
-
-			DeepCopy(NodeSet, LambdaNeighbors[BestIndex]);
-		}
-
-		// Best Solution
-		if(LogCurrentQuality < BestQuality){
-			BestQuality = LogCurrentQuality;
-			for(int h = 0 ; h < TimeHorizon ; h++){
-				BestToursCost[h] = CurrentToursCost[h];
-				BestToursDimension[h] = CurrentToursDimension[h];
-			}
-			DeepCopy(BestSolution, NodeSet);
-            printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
 		}
 
         Iteration += lambdaCandidates;
     }
 }
-
-/*
-        if(AtLeastOneFeasibleNeighbor){
-            if(BestLambdaQuality < BestQuality){
-
-                BestQuality = BestLambdaQuality;
-                for(int h = 0 ; h < TimeHorizon ; h++){
-                    BestToursCost[h] = BestLambdaToursCost[h];
-                    BestToursDimension[h] = BestLambdaToursDimension[h];
-                }
-                DeepCopy(BestSolution, BestLambda);
-
-                if(BestQuality < Optimum){
-                    newOptimum = BestQuality;
-                }
-
-                //int calculatedDimension = GetDimension(BestSolution, BestLambdaDay);
-                //assert(calculatedDimension == BestToursDimension[BestLambdaDay]);
-                printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
-            }
-
-            LogCurrentQuality = BestLambdaQuality;
-            for(int h = 0 ; h < TimeHorizon ; h++){
-                CurrentToursCost[h] = BestLambdaToursCost[h];
-                CurrentToursDimension[h] = BestLambdaToursDimension[h];
-            }
-            DeepCopy(NodeSet, BestLambda);
-            //printff("Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (LogCurrentQuality - Optimum) / Optimum), LogCurrentQuality, GetTime() - LastTime);
-            // int calculatedDimension = GetDimension(NodeSet, BestLambdaDay);
-            // assert(calculatedDimension == CurrentToursDimension[BestLambdaDay]);
-        }
-*/
