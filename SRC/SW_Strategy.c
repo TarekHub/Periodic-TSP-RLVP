@@ -2,8 +2,10 @@
 
 // SW Strategie
 void SW_Strategy(){
+	EntryTime = GetTime();
 
-    while(Iteration < MaxIterations){
+    while(GetTime() - EntryTime <= MaxTime){
+
         BestLambdaQuality = DBL_MAX;
         AtLeastOneFeasibleNeighbor = 0;
         double tempQuality = GetCurrentQuality();
@@ -12,8 +14,6 @@ void SW_Strategy(){
             LogCurrentQuality = tempQuality;
             BitFlip();
         }
-
-        Iteration += Lambda;
 
         if(AtLeastOneFeasibleNeighbor){
             if(BestLambdaQuality < BestQuality){
@@ -29,9 +29,8 @@ void SW_Strategy(){
                     newOptimum = BestQuality;
                 }
 
-                //int calculatedDimension = GetDimension(BestSolution, BestLambdaDay);
-                //assert(calculatedDimension == BestToursDimension[BestLambdaDay]);
-                printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
+                printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n",
+                    (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, StartTime + (GetTime() - LastTime));
             }
 
             LogCurrentQuality = BestLambdaQuality;
@@ -40,9 +39,6 @@ void SW_Strategy(){
                 CurrentToursDimension[h] = BestLambdaToursDimension[h];
             }
             DeepCopy(NodeSet, BestLambda);
-            //printff("Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (LogCurrentQuality - Optimum) / Optimum), LogCurrentQuality, GetTime() - LastTime);
-            // int calculatedDimension = GetDimension(NodeSet, BestLambdaDay);
-            // assert(calculatedDimension == CurrentToursDimension[BestLambdaDay]);
         }
     }
 }

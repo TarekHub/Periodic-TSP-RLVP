@@ -12,7 +12,7 @@ int Dimension;
 int Dim;
 int TotalNodes;
 
-double Precision, Optimum, LastTime;
+double Precision, Optimum, LastTime, EntryTime, StartTime;
 
 char *ParameterFileName, *ProblemFileName, *InitToursFileName, *OutputToursFileName;
 char *LastLine;
@@ -41,7 +41,9 @@ int **LambdaNeighborsToursDimension;
 
 FILE *ParameterFile, *ProblemFile, *InitToursFile, *OutputToursFile;
 
-int newOptimum, muSize, Run, Lambda, MaxIterations, TimeHorizon, Iteration, MaxDailyDuration, FourMinutes;
+int newOptimum, muSize, Run, Lambda, MaxIterations, MaxTime, TimeHorizon,
+Iteration, MaxDailyDuration, Loading;
+
 int AtLeastOneFeasibleNeighbor, Strategy;
 
 CostFunction Distance, D;
@@ -55,7 +57,6 @@ int main(int argc, char * argv[]){
     if (argc >= 2)
         ParameterFileName = argv[1];
 
-
     ReadParameters();
     Allocate();
     ReadProblem();
@@ -67,17 +68,15 @@ int main(int argc, char * argv[]){
     LastTime = GetTime();
 
     if (Strategy == SW)
-      SW_Strategy();
+		SW_Strategy();
     else{
 		AllocateID();
 		ID_Strategy();
 	}
 
-
-
-    printff("\n#LAMBDA = %d\n", Lambda);
-    printff("Best Gap = %0.3lf %, Cost = %0.3lf\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality);
-    printff("Time = %0.3f sec. \n", GetTime() - LastTime);
+    //printff("\n#LAMBDA = %d\n", Lambda);
+    //printff("Best Gap = %0.3lf %, Cost = %0.3lf\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality);
+    //printff("Time = %0.3f sec. \n", (GetTime() - LastTime));
     if(newOptimum)
       printff("New Optimum : %lf\n", BestQuality);
 

@@ -78,16 +78,16 @@ extern int TotalNodes;
 
 extern char *ParameterFileName, *ProblemFileName, *InitToursFileName, *OutputToursFileName;
 extern char *LastLine;
-extern int newOptimum, muSize, Run, Lambda, MaxIterations, TimeHorizon, Iteration, MaxDailyDuration, FourMinutes;
+extern int newOptimum, muSize, Run, Lambda, MaxIterations, MaxTime, TimeHorizon,
+			Iteration, MaxDailyDuration, Loading;
 
-extern double Precision, Optimum, LastTime;
+extern double Precision, Optimum, LastTime, EntryTime, StartTime;
 
 extern double **mu;
 
 extern FILE *ParameterFile, *ProblemFile, *InitToursFile, *OutputToursFile;
 
 extern CostFunction Distance, D;
-extern const int FOUR_MINUTES;
 
 extern int AtLeastOneFeasibleNeighbor;
 extern int Strategy;

@@ -5,9 +5,11 @@ static void Read_MU(void);
 static void Read_Optimum(void);
 static void Read_Lambda(void);
 static void Read_MAX_ITERATIONS(void);
+static void Read_MAX_TIME(void);
+static void Read_START_TIME(void);
 static void Read_TIME_HORIZON(void);
 static void Read_MAX_DAILY_DURATION(void);
-static void Read_FOUR_MINUTES(void);
+static void Read_LOADING(void);
 static void Read_PRECISION();
 static char *GetFileName(char *Line);
 
@@ -57,6 +59,10 @@ void ReadParameters()
           Read_Lambda();
         }else if (!strcmp(Keyword, "MAX_ITERATIONS")) {
           Read_MAX_ITERATIONS();
+        }else if (!strcmp(Keyword, "MAX_TIME")) {
+          Read_MAX_TIME();
+        }else if (!strcmp(Keyword, "START_TIME")) {
+          Read_START_TIME();
         }else if (!strcmp(Keyword, "TIME_HORIZON")) {
           Read_TIME_HORIZON();
         }else if (!strcmp(Keyword, "PRECISION")) {
@@ -65,8 +71,8 @@ void ReadParameters()
             Read_Optimum();
         }else if(!strcmp(Keyword, "MAX_DAILY_DURATION")) {
           Read_MAX_DAILY_DURATION();
-        }else if(!strcmp(Keyword, "FOUR_MINUTES")){
-          Read_FOUR_MINUTES();
+        }else if(!strcmp(Keyword, "LOADING")){
+          Read_LOADING();
         }else if (!strcmp(Keyword, "PROBLEM_FILE")) {
             if (!(ProblemFileName = GetFileName(0)))
                 eprintf("PROBLEM_FILE: string expected");
@@ -89,7 +95,7 @@ static void Read_Optimum()
     char *Token = strtok(0, Delimiters);
 
     if (!Token || !sscanf(Token, "%lf", &Optimum))
-        eprintf("Optimum: Integer expected");
+        eprintf("Optimum: float expected");
     if (Optimum < 0)
         eprintf("Optimum: < 0");
 }
@@ -124,6 +130,26 @@ static void Read_MAX_ITERATIONS()
         eprintf("MAX_ITERATIONS: < 0");
 }
 
+static void Read_MAX_TIME()
+{
+    char *Token = strtok(0, Delimiters);
+
+    if (!Token || !sscanf(Token, "%d", &MaxTime))
+        eprintf("MAX_TIME: Integer expected");
+    if (MaxTime < 0)
+        eprintf("MAX_TIME: < 0");
+}
+
+static void Read_START_TIME()
+{
+    char *Token = strtok(0, Delimiters);
+
+    if (!Token || !sscanf(Token, "%lf", &StartTime))
+        eprintf("START_TIME: long_float expected");
+    if (StartTime < 0)
+        eprintf("START_TIME: < 0");
+}
+
 static void Read_PRECISION()
 {
     char *Token = strtok(0, Delimiters);
@@ -144,18 +170,18 @@ static void Read_MAX_DAILY_DURATION()
         eprintf("MAX_DAILY_DURATION(: < 0");
 }
 
-static void Read_FOUR_MINUTES()
+static void Read_LOADING()
 {
       char *Token = strtok(0, Delimiters);
 
-    if (!Token || !sscanf(Token, "%d", &FourMinutes))
-        eprintf("FOUR_MINUTES(: Integer expected");
-    if (FourMinutes < 0)
-        eprintf("FOUR_MINUTES(: < 0");
-
+    if (!Token || !sscanf(Token, "%d", &Loading))
+        eprintf("LOADING(: Integer expected");
+    if (Loading < 0)
+        eprintf("LOADING: < 0");
 }
 
-static void Read_TIME_HORIZON(){
+static void Read_TIME_HORIZON()
+{
     char *Token = strtok(0, Delimiters);
 
     if (!Token || !sscanf(Token, "%d", &TimeHorizon))

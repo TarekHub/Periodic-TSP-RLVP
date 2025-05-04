@@ -55,7 +55,7 @@ void *BitFlip()
 
   //assert(fabs(LogCurrentQuality - logcurrentQuality) < Precision);
   //assert(LogCurrentQuality == logcurrentQuality);
-  assert(CurrentToursDimension[chosenDay] == chosendaydimension);
+  //assert(CurrentToursDimension[chosenDay] == chosendaydimension);
   return N;
 }
 
@@ -161,7 +161,7 @@ static void UpdateTourCost(int drop, int add, int day)
 
 int Feasible(int chosenDay)
 {
-    if( ((CurrentToursDimension[chosenDay] - 1) * FourMinutes) +
+    if( ((CurrentToursDimension[chosenDay] - 1) * Loading) +
             CurrentToursCost[chosenDay] > MaxDailyDuration){
       return 0;}
     return 1;

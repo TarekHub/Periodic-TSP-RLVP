@@ -6,7 +6,9 @@ void ID_Strategy(){
 	double tempQuality;
 	int i;
 
-	while(Iteration < MaxIterations){
+	EntryTime = GetTime();
+
+    while(GetTime() - EntryTime <= MaxTime){
         BestLambdaQuality = DBL_MAX;
         tempQuality = GetCurrentQuality();
 
@@ -94,9 +96,8 @@ void ID_Strategy(){
 				BestToursDimension[h] = CurrentToursDimension[h];
 			}
 			DeepCopy(BestSolution, NodeSet);
-            printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n", (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, GetTime() - LastTime);
+            printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n",
+                (100.0 * (BestQuality - Optimum) / Optimum), BestQuality, StartTime + (GetTime() - LastTime));
 		}
-
-        Iteration += lambdaCandidates;
     }
 }

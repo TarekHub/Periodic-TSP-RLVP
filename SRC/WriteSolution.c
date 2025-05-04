@@ -26,7 +26,7 @@ void WriteSolution(char *FileName, double Quality){
     for(int h = 0; h < TimeHorizon; h++){
       int dayDimension = BestToursDimension[h];
       int DelayDay = 0;
-      fprintf(ToursFile, "SERVICE_TIME = %d\n", ((dayDimension - 1) * FourMinutes) + BestToursCost[h]);
+      fprintf(ToursFile, "SERVICE_TIME = %d\n", ((dayDimension - 1) * Loading) + BestToursCost[h]);
 	  fprintf(ToursFile, "DAY = %d\n", h+1);
       fprintf(ToursFile, "Dimention = %d\n", BestToursDimension[h]);
 
