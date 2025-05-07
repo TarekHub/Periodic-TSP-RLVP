@@ -34,6 +34,14 @@ void Greedy_Strategy(){
 			}
 		}while(NUrg != 0);
 	}
+
+	BestQuality = LogCurrentQuality;
+	for(int h = 0 ; h < TimeHorizon ; h++){
+		BestToursCost[h] = CurrentToursCost[h];
+		BestToursDimension[h] = CurrentToursDimension[h];
+	}
+	DeepCopy(BestSolution, NodeSet);
+
 }
 
 int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc, int * impact)
