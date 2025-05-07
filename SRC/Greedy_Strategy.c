@@ -1,56 +1,46 @@
 #include "INCLUDE/MOW-P.h"
 
-static int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc);
+static int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc, int * impact);
 
 // Greedy Strategie
 void Greedy_Strategy(){
     EntryTime = GetTime();
+	Node * N, *NPred = 0, *NSucc = 0, *NUrg = 0, *NUrg_Pred = 0, * NUrg_Succ = 0;
+	int impact;
+	for(int day = 0; day < TimeHorizon; day++){
+		int offset = day * (Dimension + 1);
+		do{
+			int MaxDelay = INT_MIN, MinImpact = INT_MAX;
+			NUrg = NUrg_Pred = NUrg_Succ = 0;
+			impact = 0;
 
-    while(GetTime() - EntryTime <= MaxTime){
-        int offset, chosenDay;
-        Node *N, *N_Urg = 0, *NPred = 0, *NSuc = 0, *NPred_Urg = 0, * NSuc_Urg = 0;
-        int MaxQuality = 0;
+			for(int i = 2; i <= Dimension; i++){
+				N = &NodeSet[offset + i];
+				if(Feasible(N, day, &NPred, &NSucc, &impact)){
+					if(MaxDelay < N->Delay || (MaxDelay == N->Delay && MinImpact > impact)){
+						MaxDelay = N->Delay;
+						MinImpact = impact;
+						NUrg = N;
+						NUrg_Pred = NPred;
+						NUrg_Succ = NSucc;
+					}
+				}
+			}
 
-        for(int h = 0; h < TimeHorizon; h++){
-            offset = h * (Dimension + 1);
-            for(int i = 2; i <= Dimension; i++){
-                N = &NodeSet[offset + i];
-                double currentQUality = LogCurrentQuality;
-                int feasible = Feasible(N, h, &NPred, &NSuc) && !N->IsVisited;
-
-                if (feasible){
-                    AddNodeKnown(N, h, NPred, NSuc);
-
-                    if(currentQUality - LogCurrentQuality >= MaxQuality){
-                        MaxQuality = currentQUality - LogCurrentQuality;
-                        N_Urg = N;
-                        NPred_Urg = NPred;
-                        NSuc_Urg = NSuc;
-                        chosenDay = h;
-                    }
-
-                    RemoveNode(N, h, &NPred, &NSuc);
-                }
-            }
-        }
-
-        // BitFlip
-        if(N_Urg != 0){
-            AddNodeKnown(N_Urg, chosenDay, NPred_Urg, NSuc_Urg);
-
-            printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n",
+			if (NUrg != 0){
+				AddNodeKnown(NUrg, day, NUrg_Pred, NUrg_Succ);
+				printff("* Gap = %0.3lf %, Cost = %0.3lf,  Time = %0.3f sec.\n",
                 (100.0 * (BestQuality - Optimum) / Optimum), LogCurrentQuality, StartTime + (GetTime() - LastTime));
-        }else{
-            break;
-        }
-    }
+			}
+		}while(NUrg != 0);
+	}
 }
 
-int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc)
+int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc, int * impact)
 {
     // Tour Cost
     Node *N1, *N2, *FirstN, *i, *j;
-    int diff, cost, minCost = INT_MAX;
+    int cost, minCost = INT_MAX;
 
     N1 = FirstN = &NodeSet[chosenDay * (Dimension + 1) + 1];
     N2 = N1->Suc;
@@ -68,9 +58,11 @@ int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc)
     *NPred = i;
     *NSuc = j;
 
-    diff = i->C[N->Id] + N->C[j->Id] - i->C[j->Id];
+    *impact = i->C[N->Id] + N->C[j->Id] - i->C[j->Id];
 
-    if( ((CurrentToursDimension[chosenDay] - 1 + 1) * Loading) + CurrentToursCost[chosenDay] + diff > MaxDailyDuration)
-        return 0;
-    return 1;
+    if  (!N->IsVisited &&
+		((CurrentToursDimension[chosenDay] - 1 + 1) * Loading)
+			+ CurrentToursCost[chosenDay] + (* impact) < MaxDailyDuration)
+        return 1;
+    return 0;
 }

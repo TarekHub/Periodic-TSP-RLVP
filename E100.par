@@ -1,4 +1,4 @@
-PROBLEM_FILE = E100.0.tsp
+PROBLEM_FILE = E100.tsp
 INIT_TOURS_FILE = E100.0_lambda_600-1.init_tours
 OUTPUT_TOURS_FILE = E100.0_lambda_600-1.output_tours
 
