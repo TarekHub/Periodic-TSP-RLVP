@@ -6,9 +6,7 @@ static void UpdateTourCost(int drop, int add, int day);
 
 static int Feasible(int chosenDay);
 
-static void RemoveNode(Node *N, int chosenDay, Node **NPred, Node **NSuc);
 static void AddNode(Node *N, int chosenDay);
-static void AddNodeKnown(Node *N, int chosenDay, Node *i, Node *j);
 static void UpdateDelays(Node *N, int initialDelay);
 static int AreAlmostEqual(double a, double b, int SignificantDigits);
 double round_to_sigfigs(double value, int sigfigs);
@@ -59,7 +57,7 @@ void *BitFlip()
   return N;
 }
 
-static void RemoveNode(Node *N, int chosenDay, Node **NPred, Node **NSuc){
+void RemoveNode(Node *N, int chosenDay, Node **NPred, Node **NSuc){
   Node *NextVisit;
   int drop;
 
@@ -112,7 +110,7 @@ static void AddNode(Node *N, int chosenDay) {
   UpdateDelays(N, N->Delay);
 }
 
-static void AddNodeKnown(Node *N, int chosenDay, Node *i, Node *j) {
+void AddNodeKnown(Node *N, int chosenDay, Node *i, Node *j) {
   int drop;
 
   drop = N->Delay;
@@ -161,9 +159,8 @@ static void UpdateTourCost(int drop, int add, int day)
 
 int Feasible(int chosenDay)
 {
-    if( ((CurrentToursDimension[chosenDay] - 1) * Loading) +
-            CurrentToursCost[chosenDay] > MaxDailyDuration){
-      return 0;}
+    if( ((CurrentToursDimension[chosenDay] - 1) * Loading) + CurrentToursCost[chosenDay] > MaxDailyDuration)
+      return 0;
     return 1;
 }
 

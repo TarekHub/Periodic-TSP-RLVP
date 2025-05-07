@@ -1,792 +1,186 @@
-NAME : E100.0_lambda_600-1.output_tours.282.213867.tour
+NAME : E100.0_lambda_600-1.output_tours.20499922924.907959.tour
 TYPE : SOLUTION PTSP
 DIMENSION : 100
 TOUR_SECTION
-SERVICE_TIME = 3159492
+SERVICE_TIME = 0
 DAY = 1
-Dimention = 17
+Dimention = 1
 1
-93
-47
-48
-68
-28
-91
-54
-5
-11
-97
-10
-86
-22
-35
-46
-43
-DELAY = -119
+DELAY = 0
 ------------
-SERVICE_TIME = 3163114
+SERVICE_TIME = 0
 DAY = 2
-Dimention = 21
+Dimention = 1
 1
-71
-12
-95
-17
-14
-99
-87
-51
-69
-48
-57
-89
-68
-7
-41
-9
-83
-46
-13
-26
-DELAY = -143
+DELAY = 0
 ------------
-SERVICE_TIME = 3151722
+SERVICE_TIME = 0
 DAY = 3
-Dimention = 21
+Dimention = 1
 1
-2
-59
-4
-40
-100
-45
-33
-6
-30
-87
-16
-66
-80
-73
-8
-76
-62
-84
-85
-79
-DELAY = -133
+DELAY = 0
 ------------
-SERVICE_TIME = 3178607
+SERVICE_TIME = 0
 DAY = 4
-Dimention = 24
+Dimention = 1
 1
-26
-50
-77
-52
-96
-81
-74
-49
-18
-58
-72
-44
-55
-25
-37
-34
-88
-24
-78
-92
-46
-83
-98
-DELAY = -166
+DELAY = 0
 ------------
-SERVICE_TIME = 3177302
+SERVICE_TIME = 0
 DAY = 5
-Dimention = 17
+Dimention = 1
 1
-43
-13
-61
-42
-82
-97
-75
-67
-56
-54
-91
-57
-38
-70
-47
-27
-DELAY = -99
+DELAY = 0
 ------------
-SERVICE_TIME = 3160200
+SERVICE_TIME = 0
 DAY = 6
-Dimention = 25
+Dimention = 1
 1
-83
-9
-41
-7
-5
-11
-53
-21
-15
-29
-23
-3
-60
-31
-20
-67
-10
-86
-22
-64
-35
-13
-65
-26
-DELAY = -191
+DELAY = 0
 ------------
-SERVICE_TIME = 3176987
+SERVICE_TIME = 0
 DAY = 7
-Dimention = 20
+Dimention = 1
 1
-79
-76
-8
-36
-62
-96
-52
-77
-37
-34
-24
-46
-98
-2
-48
-51
-63
-69
-27
-DELAY = -126
+DELAY = 0
 ------------
-SERVICE_TIME = 3164405
+SERVICE_TIME = 0
 DAY = 8
-Dimention = 23
+Dimention = 1
 1
-50
-84
-85
-80
-90
-16
-12
-71
-27
-93
-47
-70
-48
-38
-4
-40
-100
-45
-59
-57
-2
-43
-DELAY = -151
+DELAY = 0
 ------------
-SERVICE_TIME = 3161894
+SERVICE_TIME = 0
 DAY = 9
-Dimention = 18
+Dimention = 1
 1
-22
-10
-75
-97
-94
-42
-61
-92
-24
-88
-25
-55
-44
-72
-39
-18
-26
-DELAY = -102
+DELAY = 0
 ------------
-SERVICE_TIME = 3183736
+SERVICE_TIME = 0
 DAY = 10
-Dimention = 17
+Dimention = 1
 1
-2
-89
-68
-28
-21
-56
-54
-91
-4
-6
-30
-87
-14
-17
-95
-32
-DELAY = -124
+DELAY = 0
 ------------
-SERVICE_TIME = 3183842
+SERVICE_TIME = 0
 DAY = 11
-Dimention = 22
+Dimention = 1
 1
-98
-83
-9
-7
-5
-11
-41
-64
-46
-13
-65
-50
-76
-8
-81
-73
-66
-80
-84
-85
-26
-DELAY = -131
+DELAY = 0
 ------------
-SERVICE_TIME = 3179596
+SERVICE_TIME = 0
 DAY = 12
-Dimention = 23
+Dimention = 1
 1
-46
-35
-22
-82
-94
-42
-61
-92
-24
-78
-88
-37
-77
-52
-58
-49
-74
-96
-36
-62
-85
-79
-DELAY = -158
+DELAY = 0
 ------------
-SERVICE_TIME = 3180527
+SERVICE_TIME = 0
 DAY = 13
-Dimention = 22
+Dimention = 1
 1
-27
-47
-70
-57
-48
-38
-4
-40
-100
-45
-19
-33
-69
-51
-63
-87
-99
-14
-17
-95
-16
-DELAY = -150
+DELAY = 0
 ------------
-SERVICE_TIME = 3182348
+SERVICE_TIME = 0
 DAY = 14
-Dimention = 23
+Dimention = 1
 1
-26
-65
-13
-34
-88
-25
-55
-44
-18
-74
-8
-36
-76
-84
-85
-79
-90
-12
-71
-27
-93
-2
-DELAY = -155
+DELAY = 0
 ------------
-SERVICE_TIME = 3156018
+SERVICE_TIME = 0
 DAY = 15
-Dimention = 23
+Dimention = 1
 1
-98
-9
-64
-22
-86
-10
-97
-75
-67
-20
-31
-60
-3
-23
-29
-15
-53
-11
-5
-7
-41
-83
-DELAY = -173
+DELAY = 0
 ------------
-SERVICE_TIME = 3172584
+SERVICE_TIME = 0
 DAY = 16
-Dimention = 17
+Dimention = 1
 1
-43
-13
-46
-92
-24
-61
-42
-82
-21
-56
-54
-91
-59
-57
-70
-27
-DELAY = -101
+DELAY = 0
 ------------
-SERVICE_TIME = 3126786
+SERVICE_TIME = 0
 DAY = 17
-Dimention = 24
+Dimention = 1
 1
-79
-85
-84
-80
-66
-73
-8
-76
-62
-96
-74
-49
-18
-39
-72
-44
-55
-25
-37
-77
-52
-50
-65
-DELAY = -150
+DELAY = 0
 ------------
-SERVICE_TIME = 3141499
+SERVICE_TIME = 0
 DAY = 18
-Dimention = 23
+Dimention = 1
 1
-26
-27
-47
-70
-48
-38
-69
-51
-63
-32
-95
-17
-14
-87
-30
-6
-33
-45
-100
-4
-57
-2
-DELAY = -152
+DELAY = 0
 ------------
-SERVICE_TIME = 3176698
+SERVICE_TIME = 0
 DAY = 19
-Dimention = 20
+Dimention = 1
 1
-89
-68
-28
-5
-23
-60
-20
-75
-97
-10
-86
-94
-82
-22
-64
-35
-46
-83
-98
-DELAY = -150
+DELAY = 0
 ------------
-SERVICE_TIME = 3157575
+SERVICE_TIME = 0
 DAY = 20
-Dimention = 23
+Dimention = 1
 1
-13
-43
-83
-9
-41
-7
-11
-29
-15
-21
-56
-54
-91
-19
-45
-100
-40
-4
-57
-48
-47
-71
-DELAY = -146
+DELAY = 0
 ------------
-SERVICE_TIME = 3182457
+SERVICE_TIME = 0
 DAY = 21
-Dimention = 23
+Dimention = 1
 1
-79
-85
-84
-76
-81
-96
-58
-52
-77
-37
-34
-88
-24
-78
-92
-61
-42
-10
-22
-35
-46
-98
-DELAY = -154
+DELAY = 0
 ------------
-SERVICE_TIME = 3182823
+SERVICE_TIME = 0
 DAY = 22
-Dimention = 22
+Dimention = 1
 1
-2
-93
-47
-70
-12
-16
-80
-8
-36
-62
-96
-74
-49
-18
-39
-72
-44
-55
-25
-52
-26
-DELAY = -143
+DELAY = 0
 ------------
-SERVICE_TIME = 3186757
+SERVICE_TIME = 0
 DAY = 23
-Dimention = 21
+Dimention = 1
 1
-71
-27
-48
-38
-69
-51
-63
-87
-99
-14
-17
-95
-90
-73
-84
-76
-62
-50
-13
-65
-DELAY = -143
+DELAY = 0
 ------------
-SERVICE_TIME = 3150614
+SERVICE_TIME = 0
 DAY = 24
-Dimention = 23
+Dimention = 1
 1
-46
-35
-64
-61
-42
-82
-22
-86
-10
-97
-75
-67
-20
-31
-3
-53
-5
-7
-41
-9
-83
-98
-DELAY = -162
+DELAY = 0
 ------------
-SERVICE_TIME = 3159323
+SERVICE_TIME = 0
 DAY = 25
-Dimention = 21
+Dimention = 1
 1
-2
-68
-59
-4
-40
-100
-45
-33
-6
-30
-87
-14
-17
-32
-16
-66
-80
-84
-85
-79
-DELAY = -145
+DELAY = 0
 ------------
-SERVICE_TIME = 3173355
+SERVICE_TIME = 0
 DAY = 26
-Dimention = 23
+Dimention = 1
 1
-83
-9
-41
-7
-5
-11
-60
-23
-29
-15
-21
-56
-54
-91
-28
-57
-48
-70
-47
-27
-71
-26
-DELAY = -147
+DELAY = 0
 ------------
-SERVICE_TIME = 3180489
+SERVICE_TIME = 0
 DAY = 27
-Dimention = 21
+Dimention = 1
 1
-65
-8
-74
-49
-18
-39
-44
-55
-25
-77
-37
-88
-24
-92
-61
-94
-22
-46
-13
-43
-DELAY = -129
+DELAY = 0
 ------------
-SERVICE_TIME = 3140148
+SERVICE_TIME = 0
 DAY = 28
-Dimention = 21
+Dimention = 1
 1
-98
-83
-89
-2
-57
-48
-38
-69
-51
-63
-16
-80
-73
-85
-84
-76
-96
-62
-50
-26
-DELAY = -121
+DELAY = 0
 ------------
-SERVICE_TIME = 3097076
+SERVICE_TIME = 0
 DAY = 29
-Dimention = 18
+Dimention = 1
 1
-79
-85
-76
-8
-81
-52
-34
-42
-94
-10
-97
-75
-22
-64
-35
-13
-65
-DELAY = -113
+DELAY = 0
 ------------
-SERVICE_TIME = 3093337
+SERVICE_TIME = 0
 DAY = 30
-Dimention = 20
+Dimention = 1
 1
-27
-93
-70
-48
-38
-57
-33
-19
-45
-100
-40
-56
-21
-7
-41
-9
-83
-13
-26
-DELAY = -124
+DELAY = 0
 ------------
 -1
 EOF

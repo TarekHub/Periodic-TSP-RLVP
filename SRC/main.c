@@ -69,6 +69,8 @@ int main(int argc, char * argv[]){
 
     if (Strategy == SW)
 		SW_Strategy();
+    else if (Strategy == GREEDY)
+        Greedy_Strategy();
     else{
 		AllocateID();
 		ID_Strategy();

@@ -41,7 +41,7 @@ void ReadParameters()
           Read_MU();
         }else if (!strcmp(Keyword, "STRATEGY")){
 			if (!(Token = strtok(0, Delimiters)))
-				eprintf("%s", "STRATEGY: SW, ID_BEST or ID_ANY expected");
+				eprintf("%s", "STRATEGY: SW, ID_BEST, ID_ANY or GREEDY expected");
 
             for (i = 0; i < strlen(Token); i++)
                 Token[i] = (char) toupper(Token[i]);
@@ -52,8 +52,10 @@ void ReadParameters()
                 Strategy = ID_BEST;
             else if (!strncmp(Token, "ID_ANY", strlen(Token)))
                 Strategy = ID_ANY;
+            else if (!strncmp(Token, "GREEDY", strlen(Token)))
+                Strategy = GREEDY;
 			else
-				eprintf("%s", "STRATEGY: SW, ID_BEST or ID_ANY expected");
+				eprintf("%s", "STRATEGY: SW, ID_BEST, ID_ANY or GREEDY expected");
 
 		}else if (!strcmp(Keyword, "LAMBDA")) {
           Read_Lambda();

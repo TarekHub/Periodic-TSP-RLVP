@@ -22,7 +22,7 @@
 #define Add(a, b, c) { Link(a, b); Link(b, c); b->IsVisited = 1;}
 #define PRANDMAX INT_MAX
 
-enum Strategies { SW, ID_BEST, ID_ANY};
+enum Strategies { SW, ID_BEST, ID_ANY, GREEDY};
 
 /* Node structure */
 typedef struct Node Node;
@@ -118,6 +118,7 @@ void *BitFlip();
 
 void SW_Strategy();
 void ID_Strategy();
+void Greedy_Strategy();
 
 int GetDimension(Node * Solution, int day);
 
@@ -126,6 +127,10 @@ void WriteSolution(char *FileName, double Quality);
 void WriteInitTours(char *FileName, double Quality);
 
 double GetTime();
+
+// Functions in Specific class
+void AddNodeKnown(Node *N, int chosenDay, Node *i, Node *j);
+void RemoveNode(Node *N, int chosenDay, Node **NPred, Node **NSuc);
 
 
 #endif //MOW_P_H
