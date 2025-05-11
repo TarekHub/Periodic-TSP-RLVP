@@ -44,33 +44,38 @@ void Greedy_Strategy(){
 
 }
 
-int Feasible(Node * N, int chosenDay, Node **NPred, Node **NSuc, int * impact)
+int Feasible(Node *N, int chosenDay, Node **NPred, Node **NSuc, int *impact)
 {
-    // Tour Cost
-    Node *N1, *N2, *FirstN, *i, *j;
-    int cost, minCost = INT_MAX;
+	Node *N1, *N2, *FirstN;
+	int cost, minCost = INT_MAX;
 
-    N1 = FirstN = &NodeSet[chosenDay * (Dimension + 1) + 1];
-    N2 = N1->Suc;
+	FirstN = &NodeSet[chosenDay * (Dimension + 1) + 1];
+	N1 = FirstN;
 
-    // Trouver l'arête qui fait le moins de dégâts possible
-    do {
-        cost = (N1->C[N->Id] + N->C[N2->Id]) - N1->C[N2->Id];
-        if (cost < minCost) {
-            minCost = cost;
-            i = N1;
-            j = N2;
-        }
-    } while (((N1 = N1->Suc) != FirstN) && (N2 = N2->Suc));
+	// Trouver l'arête qui fait le moins de dégâts possible
+	do {
+		N2 = N1->Suc;  // N2 est le successeur de N1
 
-    *NPred = i;
-    *NSuc = j;
+		// (Coût de N1->N + Coût de N->N2) - Coût de N1->N2
+		cost = (N1->C[N->Id] + N->C[N2->Id]) - N1->C[N2->Id];
 
-    *impact = i->C[N->Id] + N->C[j->Id] - i->C[j->Id];
+		if (cost < minCost) {
+			minCost = cost;
+			*NPred = N1;  // Stocke directement dans NPred
+			*NSuc = N2;   // Stocke directement dans NSuc
+		}
 
-    if  (!N->IsVisited &&
-		((CurrentToursDimension[chosenDay] - 1 + 1) * Loading)
-			+ CurrentToursCost[chosenDay] + (* impact) < MaxDailyDuration)
-        return 1;
-    return 0;
+		N1 = N1->Suc;  // Passer au nœud suivant
+	} while (N1 != FirstN);  // Jusqu'à revenir au premier nœud
+
+	// Calcul d'impact correct en utilisant les nœuds stockés dans NPred et NSuc
+	*impact = (*NPred)->C[N->Id] + N->C[(*NSuc)->Id] - (*NPred)->C[(*NSuc)->Id];
+
+	// Vérification de la faisabilité
+	if (!N->IsVisited &&
+		((CurrentToursDimension[chosenDay] - 1 + 1) * Loading) +
+		CurrentToursCost[chosenDay] + (*impact) < MaxDailyDuration)
+		return 1;
+
+	return 0;
 }

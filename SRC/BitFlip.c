@@ -82,31 +82,38 @@ void RemoveNode(Node *N, int chosenDay, Node **NPred, Node **NSuc){
 }
 
 static void AddNode(Node *N, int chosenDay) {
-  Node *N1, *N2, *FirstN, *i, *j;
+  Node *N1, *N2, *FirstN, *BestN1, *BestN2;
   int cost, minCost = INT_MAX, drop;
 
-  N1 = FirstN = &NodeSet[chosenDay * (Dimension + 1) + 1];
-  N2 = N1->Suc;
+  FirstN = &NodeSet[chosenDay * (Dimension + 1) + 1];
+  N1 = FirstN;
 
   // Trouver l'arête qui fait le moins de dégâts possible
   do {
+    N2 = N1->Suc;  // N2 est le successeur de N1
+
+    // Calcul du coût d'insertion pour un graphe asymétrique:
+    // (Coût de N1->N + Coût de N->N2) - Coût de N1->N2
     cost = (N1->C[N->Id] + N->C[N2->Id]) - N1->C[N2->Id];
+
     if (cost < minCost) {
       minCost = cost;
-      i = N1;
-      j = N2;
+      BestN1 = N1;
+      BestN2 = N2;
     }
-  } while (((N1 = N1->Suc) != FirstN) && (N2 = N2->Suc));
+
+    N1 = N1->Suc;  // Passer au nœud suivant
+  } while (N1 != FirstN);  // Jusqu'à revenir au premier nœud
 
   drop = N->Delay;
-  N->Delay = - *N->FillingPeriod;
+  N->Delay = -*N->FillingPeriod;
 
-  Add(i, N, j);
+  // Insérer N entre BestN1 et BestN2
+  Add(BestN1, N, BestN2);
 
   CurrentToursDimension[chosenDay] += 1;
-  UpdateQuality(drop, (- *N->FillingPeriod));
-  UpdateTourCost(i->C[j->Id], (i->C[N->Id] + N->C[j->Id]), chosenDay);
-
+  UpdateQuality(drop, (-*N->FillingPeriod));
+  UpdateTourCost(BestN1->C[BestN2->Id], (BestN1->C[N->Id] + N->C[BestN2->Id]), chosenDay);
   UpdateDelays(N, N->Delay);
 }
 

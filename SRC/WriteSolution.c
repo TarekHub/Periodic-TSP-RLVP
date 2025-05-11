@@ -22,10 +22,9 @@ void WriteSolution(char *FileName, double Quality){
     fprintf(ToursFile, "TYPE : SOLUTION PTSP\n");
     fprintf(ToursFile, "DIMENSION : %d\n", Dimension);
     fprintf(ToursFile, "TOUR_SECTION\n");
-
-    for(int h = 0; h < TimeHorizon; h++){
+	int h;
+    for(h = 0; h < TimeHorizon; h++){
       int dayDimension = BestToursDimension[h];
-      int DelayDay = 0;
       fprintf(ToursFile, "SERVICE_TIME = %d\n", ((dayDimension - 1) * Loading) + BestToursCost[h]);
 	  fprintf(ToursFile, "DAY = %d\n", h+1);
       fprintf(ToursFile, "Dimention = %d\n", BestToursDimension[h]);
@@ -34,14 +33,22 @@ void WriteSolution(char *FileName, double Quality){
       N = &BestSolution[offset + 1];
       for(int i = 0; i < dayDimension; i++){
           fprintf(ToursFile, "%d\n", N->Id);
-          DelayDay += N->Delay;
           N = N->Suc;
       }
-      fprintf(ToursFile, "DELAY = %d\n", DelayDay);
       fprintf(ToursFile, "------------\n");
     }
 
-    fprintf(ToursFile, "-1\nEOF\n");
+	fprintf(ToursFile, "DELAYS_SECTION\n");
+	for(h = 0; h < TimeHorizon; h++){
+		offset = h * (Dimension + 1);
+		for(int i = 2; i <= Dimension; i++){
+			N = &NodeSet[offset + i];
+			fprintf(ToursFile, "%d ", N->Delay);
+		}
+		fprintf(ToursFile, "\n");
+	}
+
+    fprintf(ToursFile, "EOF\n");
     fclose(ToursFile);
     free(FullFileName);
 }
