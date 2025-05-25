@@ -2,7 +2,7 @@ PROBLEM_FILE = calais312_2.atsp
 INIT_TOURS_FILE = calais312.init_tours
 OUTPUT_TOURS_FILE = calais312.output_tours
 
-STRATEGY = SW
+STRATEGY = GREEDY_KCLOSEST
 MAX_TIME = 200
 START_TIME = 0
 

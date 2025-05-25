@@ -22,7 +22,7 @@
 #define Add(a, b, c) { Link(a, b); Link(b, c); b->IsVisited = 1;}
 #define PRANDMAX INT_MAX
 
-enum Strategies { SW, ID_BEST, ID_ANY, GREEDY};
+enum Strategies { SW, ID_BEST, ID_ANY, GREEDY, GREEDY_KCLOSEST};
 
 /* Node structure */
 typedef struct Node Node;
@@ -79,7 +79,7 @@ extern int TotalNodes;
 extern char *ParameterFileName, *ProblemFileName, *InitToursFileName, *OutputToursFileName;
 extern char *LastLine;
 extern int newOptimum, muSize, Run, Lambda, MaxIterations, MaxTime, TimeHorizon,
-			Iteration, MaxDailyDuration, Loading;
+			Iteration, MaxDailyDuration, Loading, K;
 
 extern double Precision, Optimum, LastTime, EntryTime, StartTime;
 
@@ -119,6 +119,7 @@ void *BitFlip();
 void SW_Strategy();
 void ID_Strategy();
 void Greedy_Strategy();
+void Greedy_k_Closest();
 
 int GetDimension(Node * Solution, int day);
 

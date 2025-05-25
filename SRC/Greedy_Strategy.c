@@ -61,8 +61,8 @@ int Feasible(Node *N, int chosenDay, Node **NPred, Node **NSuc, int *impact)
 
 		if (cost < minCost) {
 			minCost = cost;
-			*NPred = N1;  // Stocke directement dans NPred
-			*NSuc = N2;   // Stocke directement dans NSuc
+			*NPred = N1;
+			*NSuc = N2;
 		}
 
 		N1 = N1->Suc;  // Passer au nœud suivant

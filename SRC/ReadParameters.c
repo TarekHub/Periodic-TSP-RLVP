@@ -3,6 +3,7 @@
 static char Delimiters[] = "= \n\t\r\f\v\xef\xbb\xbf";
 static void Read_MU(void);
 static void Read_Optimum(void);
+static void Read_K(void);
 static void Read_Lambda(void);
 static void Read_MAX_ITERATIONS(void);
 static void Read_MAX_TIME(void);
@@ -41,7 +42,7 @@ void ReadParameters()
           Read_MU();
         }else if (!strcmp(Keyword, "STRATEGY")){
 			if (!(Token = strtok(0, Delimiters)))
-				eprintf("%s", "STRATEGY: SW, ID_BEST, ID_ANY or GREEDY expected");
+				eprintf("%s", "STRATEGY: SW, ID_BEST, ID_ANY, GREEDY or GREEDY_KCLOSEST expected");
 
             for (i = 0; i < strlen(Token); i++)
                 Token[i] = (char) toupper(Token[i]);
@@ -54,10 +55,14 @@ void ReadParameters()
                 Strategy = ID_ANY;
             else if (!strncmp(Token, "GREEDY", strlen(Token)))
                 Strategy = GREEDY;
+            else if (!strncmp(Token, "GREEDY_KCLOSEST", strlen(Token)))
+                Strategy = GREEDY_KCLOSEST;
 			else
-				eprintf("%s", "STRATEGY: SW, ID_BEST, ID_ANY or GREEDY expected");
+				eprintf("%s", "STRATEGY: SW, ID_BEST, ID_ANY, GREEDY or GREEDY_KCLOSEST expected");
 
-		}else if (!strcmp(Keyword, "LAMBDA")) {
+		}else if (!strcmp(Keyword, "K")) {
+          Read_K();
+        }else if (!strcmp(Keyword, "LAMBDA")) {
           Read_Lambda();
         }else if (!strcmp(Keyword, "MAX_ITERATIONS")) {
           Read_MAX_ITERATIONS();
@@ -120,6 +125,16 @@ static void Read_Lambda()
         eprintf("LAMBDA: Integer expected");
     if (Lambda < 0)
         eprintf("LAMBDA: < 0");
+}
+
+static void Read_K()
+{
+    char *Token = strtok(0, Delimiters);
+
+    if (!Token || !sscanf(Token, "%d", &K))
+        eprintf("K: Integer expected");
+    if (Lambda < 0)
+        eprintf("K: < 0");
 }
 
 static void Read_MAX_ITERATIONS()

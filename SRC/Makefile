@@ -11,7 +11,8 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ = main.o ReadParameters.o ReadProblem.o eprintf.o printff.o ReadLine.o InitMu.o \
 	   fscanint.o Distance.o Forbidden.o ReadInitTours.o InitQuality.o BitFlip.o InitToursCost.o \
 	   Allocate.o DeepCopy.o GetCurrentQuality.o WriteSolution.o GetDimension.o GetTime.o \
-	   Init.o WriteInitTours.o SW_Strategy.o ID_Strategy.o Greedy_Strategy.o
+	   Init.o WriteInitTours.o SW_Strategy.o ID_Strategy.o Greedy_Strategy.o Greedy_k_Closest.o \
+
 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 

@@ -42,7 +42,7 @@ int **LambdaNeighborsToursDimension;
 FILE *ParameterFile, *ProblemFile, *InitToursFile, *OutputToursFile;
 
 int newOptimum, muSize, Run, Lambda, MaxIterations, MaxTime, TimeHorizon,
-Iteration, MaxDailyDuration, Loading;
+Iteration, MaxDailyDuration, Loading, K;
 
 int AtLeastOneFeasibleNeighbor, Strategy;
 
@@ -71,7 +71,9 @@ int main(int argc, char * argv[]){
 		SW_Strategy();
     else if (Strategy == GREEDY)
         Greedy_Strategy();
-    else{
+	else if (Strategy == GREEDY_KCLOSEST)
+    	Greedy_k_Closest();
+	else{
 		AllocateID();
 		ID_Strategy();
 	}
